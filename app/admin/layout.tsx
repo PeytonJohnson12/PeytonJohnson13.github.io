@@ -8,17 +8,19 @@ export const metadata: Metadata = {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen overflow-hidden">
-      <aside className="w-64 shrink-0 border-r border-gray-200 bg-white flex flex-col">
-        <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
-          <span className="font-semibold text-gray-900">Admin Panel</span>
-          <Link href="/" className="text-xs text-gray-400 hover:text-brand transition-colors">
+    <div className="flex h-screen overflow-hidden bg-[#020817]">
+      <aside className="w-64 shrink-0 border-r border-white/10 bg-[#0f172a] flex flex-col">
+        <div className="h-16 flex items-center justify-between px-4 border-b border-white/10">
+          <span className="font-bold text-white">
+            Acme<span className="text-blue-400">Corp</span>
+          </span>
+          <Link href="/" className="text-xs text-slate-500 hover:text-blue-400 transition-colors">
             ← Site
           </Link>
         </div>
         <AdminSidebar />
       </aside>
-      <main className="flex-1 overflow-y-auto bg-gray-50">
+      <main className="flex-1 overflow-y-auto bg-[#020817]">
         {children}
       </main>
     </div>

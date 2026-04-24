@@ -27,14 +27,14 @@ export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps
       onDragStart={handleDragStart}
       onDragEnd={() => setIsDragging(false)}
       onDragOver={(e) => e.preventDefault()}
-      className={`group relative bg-white rounded-lg shadow-sm border border-gray-200 p-3 cursor-grab active:cursor-grabbing select-none transition-opacity ${
+      className={`group relative rounded-lg border border-white/10 bg-[#1e293b] p-3 cursor-grab active:cursor-grabbing select-none transition-all duration-200 hover:border-blue-500/30 hover:bg-[#263348] ${
         isDragging ? "opacity-50" : "opacity-100"
       }`}
     >
-      <p className="text-sm text-gray-800 pr-5 leading-snug">{card.title}</p>
+      <p className="text-sm text-slate-200 pr-5 leading-snug">{card.title}</p>
       <button
         onClick={() => onDelete(card.id, columnId)}
-        className="absolute top-2 right-2 w-5 h-5 flex items-center justify-center rounded text-gray-300 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all text-xs font-bold"
+        className="absolute top-2 right-2 w-5 h-5 flex items-center justify-center rounded text-slate-600 hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all text-xs font-bold"
         aria-label="Delete card"
       >
         ×

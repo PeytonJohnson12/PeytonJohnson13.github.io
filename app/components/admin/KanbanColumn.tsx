@@ -66,13 +66,15 @@ export default function KanbanColumn({ column, onCardMove, onCardDelete, onCardA
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className={`flex flex-col w-72 shrink-0 rounded-xl p-3 transition-colors ${
-        isDragOver ? "bg-brand/10 ring-2 ring-brand" : "bg-gray-100"
+      className={`flex flex-col w-72 shrink-0 rounded-xl p-3 border transition-all duration-200 ${
+        isDragOver
+          ? "border-blue-500 bg-blue-500/10 ring-2 ring-blue-500/30"
+          : "border-white/10 bg-white/5"
       }`}
     >
       <div className="flex items-center justify-between mb-3 px-1">
-        <h3 className="font-semibold text-sm text-gray-700">{column.title}</h3>
-        <span className="text-xs text-gray-400 bg-white rounded-full px-2 py-0.5 border border-gray-200">
+        <h3 className="font-semibold text-sm text-slate-200">{column.title}</h3>
+        <span className="text-xs text-slate-500 bg-white/10 rounded-full px-2 py-0.5 border border-white/10">
           {column.cards.length}
         </span>
       </div>
@@ -99,18 +101,18 @@ export default function KanbanColumn({ column, onCardMove, onCardDelete, onCardA
             onChange={(e) => setAddingTitle(e.target.value)}
             onKeyDown={handleAddKeyDown}
             placeholder="Card title…"
-            className="mt-2 w-full rounded-lg border border-gray-300 p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-brand"
+            className="mt-2 w-full rounded-lg border border-white/10 bg-white/10 text-white placeholder:text-slate-500 p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <div className="flex gap-2 mt-1.5">
             <button
               onClick={handleAddSave}
-              className="rounded-md bg-brand text-white text-xs font-medium px-3 py-1.5 hover:bg-brand-dark transition-colors"
+              className="rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium px-3 py-1.5 transition-colors"
             >
               Add card
             </button>
             <button
               onClick={() => setAddingTitle(null)}
-              className="rounded-md text-gray-500 text-xs font-medium px-3 py-1.5 hover:bg-gray-200 transition-colors"
+              className="rounded-md text-slate-400 text-xs font-medium px-3 py-1.5 hover:bg-white/10 transition-colors"
             >
               Cancel
             </button>
@@ -119,7 +121,7 @@ export default function KanbanColumn({ column, onCardMove, onCardDelete, onCardA
       ) : (
         <button
           onClick={() => setAddingTitle("")}
-          className="mt-2 flex items-center gap-1.5 w-full rounded-lg px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
+          className="mt-2 flex items-center gap-1.5 w-full rounded-lg px-2 py-1.5 text-sm text-slate-500 hover:bg-white/10 hover:text-slate-300 transition-colors"
         >
           <span className="text-base leading-none">+</span> Add a card
         </button>

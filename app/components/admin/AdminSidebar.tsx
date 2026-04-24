@@ -37,8 +37,8 @@ export default function AdminSidebar() {
             href={href}
             className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
               isActive
-                ? "bg-brand text-white"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                ? "bg-blue-600 text-white"
+                : "text-slate-400 hover:text-white hover:bg-white/10"
             }`}
           >
             {icon}
