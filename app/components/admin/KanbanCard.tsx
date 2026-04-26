@@ -17,7 +17,6 @@ const priorityStyles: Record<Priority, { bg: string; text: string; label: string
 
 export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps) {
   const [isDragging, setIsDragging] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const isDone = columnId === "done";
   const isInProgress = columnId === "inprogress";
 
@@ -38,16 +37,16 @@ export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps
       onDragStart={handleDragStart}
       onDragEnd={() => setIsDragging(false)}
       onDragOver={(e) => e.preventDefault()}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="group relative rounded-xl border bg-[#0D1117] p-4 cursor-grab active:cursor-grabbing select-none transition-all duration-150"
+      className={`group relative rounded-xl border bg-[#0D1117] p-4 cursor-grab active:cursor-grabbing select-none transition-all duration-150 ${
+        isDone
+          ? "border-[rgba(34,197,94,0.15)]"
+          : "border-[rgba(255,255,255,0.07)] hover:border-[rgba(59,130,246,0.2)]"
+      }`}
       style={{
-        borderColor: isDone ? "rgba(34,197,94,0.15)" : isHovered ? "rgba(59,130,246,0.2)" : "rgba(255,255,255,0.07)",
         opacity: isDragging ? 0.45 : isDone ? 0.75 : 1,
         transform: isDragging ? "scale(0.97)" : undefined,
       }}
     >
-      {/* Delete button */}
       <button
         onClick={() => onDelete(card.id, columnId)}
         className="absolute top-2.5 right-2.5 w-5 h-5 flex items-center justify-center rounded text-[#3B4454] hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all text-xs font-bold"
@@ -56,7 +55,6 @@ export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps
         ×
       </button>
 
-      {/* Done badge */}
       {isDone && (
         <div className="flex items-center gap-1.5 mb-2.5">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -67,7 +65,6 @@ export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps
         </div>
       )}
 
-      {/* Priority badge */}
       {priority && !isDone && (
         <div
           className="inline-block mb-2.5 px-2 py-0.5 rounded text-[11px] font-semibold"
@@ -77,7 +74,6 @@ export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps
         </div>
       )}
 
-      {/* Title */}
       <p
         className="text-[14px] leading-snug font-medium pr-5"
         style={{ color: isDone ? "#6E7681" : "#F0F6FC", textDecoration: isDone ? "line-through" : "none" }}
@@ -85,7 +81,6 @@ export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps
         {card.title}
       </p>
 
-      {/* Progress bar (in-progress only) */}
       {isInProgress && card.progress != null && card.progress > 0 && (
         <div className="mt-3 rounded-md bg-[#F59E0B]/06 p-2.5">
           <div className="flex justify-between mb-1.5">
@@ -101,7 +96,6 @@ export default function KanbanCard({ card, columnId, onDelete }: KanbanCardProps
         </div>
       )}
 
-      {/* Footer: due date + assignee */}
       {(card.dueDate || card.assigneeColor) && (
         <div className="flex items-center mt-3">
           {card.dueDate && (

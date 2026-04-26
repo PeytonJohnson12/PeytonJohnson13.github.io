@@ -17,7 +17,6 @@ const activity = [
 export default function AdminPage() {
   return (
     <div className="flex flex-col h-full">
-      {/* Top bar */}
       <div className="h-16 shrink-0 flex items-center justify-between px-8 border-b border-white/[0.06]">
         <span className="text-[15px] font-medium text-[#6E7681]">Dashboard</span>
         <button className="px-4 py-1.5 rounded-lg bg-[#3B82F6] text-white text-[13px] font-semibold hover:bg-[#2563EB] transition-colors">
@@ -26,13 +25,11 @@ export default function AdminPage() {
       </div>
 
       <div className="flex-1 p-8 flex flex-col gap-6 overflow-auto">
-        {/* Greeting */}
         <div>
           <h1 className="text-[28px] font-extrabold text-[#F0F6FC] tracking-[-0.02em]">Good morning, Alex</h1>
           <p className="mt-1 text-[15px] text-[#6E7681]">Here's what's happening with your projects today.</p>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map(({ label, value, trend, trendColor, accent }) => (
             <div
@@ -62,9 +59,7 @@ export default function AdminPage() {
           ))}
         </div>
 
-        {/* Bottom row */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1">
-          {/* Quick access */}
           <div className="rounded-xl border border-white/[0.06] bg-[#0D1117] p-6 flex flex-col gap-4">
             <h2 className="text-[14px] font-bold text-[#F0F6FC]">Quick Access</h2>
             <Link
@@ -86,7 +81,6 @@ export default function AdminPage() {
             </Link>
           </div>
 
-          {/* Recent activity */}
           <div className="lg:col-span-2 rounded-xl border border-white/[0.06] bg-[#0D1117] p-6 flex flex-col gap-4">
             <h2 className="text-[14px] font-bold text-[#F0F6FC]">Recent Activity</h2>
             <div className="flex flex-col gap-3">

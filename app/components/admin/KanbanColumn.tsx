@@ -62,7 +62,6 @@ export default function KanbanColumn({ column, onCardMove, onCardDelete, onCardA
         boxShadow: isDragOver ? `0 0 0 2px ${meta.dragBorder}33` : undefined,
       }}
     >
-      {/* Column header */}
       <div className="flex items-center gap-2 mb-3 px-1">
         <div className="w-2 h-2 rounded-full shrink-0" style={{ background: meta.dot }} />
         <h3 className="text-[13px] font-bold text-[#F0F6FC] uppercase tracking-[0.04em]">
@@ -76,7 +75,6 @@ export default function KanbanColumn({ column, onCardMove, onCardDelete, onCardA
         </span>
       </div>
 
-      {/* Cards */}
       <div className="flex flex-col gap-2 flex-1">
         {column.cards.map((card) => (
           <KanbanCard
@@ -89,7 +87,6 @@ export default function KanbanColumn({ column, onCardMove, onCardDelete, onCardA
         <div className="flex-1 min-h-4" />
       </div>
 
-      {/* Add card */}
       {addingTitle !== null ? (
         <>
           <textarea
