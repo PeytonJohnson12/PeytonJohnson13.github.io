@@ -9,25 +9,64 @@ const INITIAL_STATE: BoardState = [
     id: "todo",
     title: "To Do",
     cards: [
-      { id: "1", title: "Research competitor pricing" },
-      { id: "2", title: "Write Q2 blog post" },
-      { id: "3", title: "Set up analytics dashboard" },
+      {
+        id: "1",
+        title: "Research competitor pricing",
+        priority: "high",
+        dueDate: "Apr 28",
+        assigneeColor: "linear-gradient(135deg,#10b981,#059669)",
+      },
+      {
+        id: "2",
+        title: "Write Q2 blog post",
+        priority: "medium",
+        dueDate: "May 2",
+        assigneeColor: "linear-gradient(135deg,#f59e0b,#d97706)",
+      },
+      {
+        id: "3",
+        title: "Set up analytics dashboard",
+        priority: "low",
+        dueDate: "May 10",
+        assigneeColor: "linear-gradient(135deg,#4f46e5,#7c3aed)",
+      },
     ],
   },
   {
     id: "inprogress",
     title: "In Progress",
     cards: [
-      { id: "4", title: "Redesign onboarding flow" },
-      { id: "5", title: "Fix login page on mobile" },
+      {
+        id: "4",
+        title: "Redesign onboarding flow",
+        priority: "high",
+        dueDate: "Apr 30",
+        progress: 65,
+        assigneeColor: "linear-gradient(135deg,#0ea5e9,#3b82f6)",
+      },
+      {
+        id: "5",
+        title: "Fix login page on mobile",
+        priority: "medium",
+        dueDate: "May 1",
+        assigneeColor: "linear-gradient(135deg,#10b981,#059669)",
+      },
     ],
   },
   {
     id: "done",
     title: "Done",
     cards: [
-      { id: "6", title: "Launch new landing page" },
-      { id: "7", title: "Migrate database to v2 schema" },
+      {
+        id: "6",
+        title: "Launch new landing page",
+        assigneeColor: "linear-gradient(135deg,#f59e0b,#d97706)",
+      },
+      {
+        id: "7",
+        title: "Migrate database to v2 schema",
+        assigneeColor: "linear-gradient(135deg,#4f46e5,#7c3aed)",
+      },
     ],
   },
 ];

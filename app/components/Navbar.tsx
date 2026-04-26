@@ -8,10 +8,11 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 h-16 bg-black/40 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-6">
-      <Link href="/" className="font-bold text-lg text-white tracking-tight">
-        Acme<span className="text-blue-400">Corp</span>
+    <header className="fixed top-0 inset-x-0 z-50 h-16 bg-[#03050E]/60 backdrop-blur-xl border-b border-white/[0.06] flex items-center justify-between px-12">
+      <Link href="/" className="font-extrabold text-xl text-[#F0F6FC] tracking-[-0.03em]">
+        Acme<span className="text-[#3B82F6]">Corp</span>
       </Link>
+
       <nav className="flex items-center gap-1">
         {NAV_LINKS.map(({ label, href }) => {
           const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href.replace("/#", "/"));
@@ -19,10 +20,10 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors duration-150 ${
                 isActive
-                  ? "bg-blue-600 text-white"
-                  : "text-slate-400 hover:text-white hover:bg-white/10"
+                  ? "bg-[#3B82F6]/12 border border-[#3B82F6]/20 text-[#3B82F6]"
+                  : "text-[#6E7681] hover:text-[#F0F6FC] hover:bg-white/[0.06]"
               }`}
             >
               {label}
@@ -30,6 +31,21 @@ export default function Navbar() {
           );
         })}
       </nav>
+
+      <div className="flex items-center gap-2">
+        <Link
+          href="/admin"
+          className="px-5 py-2 rounded-lg text-sm font-semibold text-[#F0F6FC] border border-white/12 hover:bg-white/[0.06] transition-colors duration-150"
+        >
+          Sign In
+        </Link>
+        <Link
+          href="/#features"
+          className="px-5 py-2 rounded-lg text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] transition-colors duration-150"
+        >
+          Get Started
+        </Link>
+      </div>
     </header>
   );
 }

@@ -8,8 +8,11 @@ const navItems = [
     label: "Dashboard",
     href: "/admin",
     icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor" />
+        <rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.4" />
+        <rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.4" />
+        <rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.4" />
       </svg>
     ),
   },
@@ -17,8 +20,29 @@ const navItems = [
     label: "Kanban Board",
     href: "/admin/kanban",
     icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <rect x="1" y="2" width="4" height="12" rx="1.5" fill="currentColor" />
+        <rect x="6" y="2" width="4" height="8" rx="1.5" fill="currentColor" opacity="0.6" />
+        <rect x="11" y="2" width="4" height="10" rx="1.5" fill="currentColor" opacity="0.4" />
+      </svg>
+    ),
+  },
+  {
+    label: "Analytics",
+    href: "/admin/analytics",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <polyline points="1,12 5,7 8,9 12,4 15,6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    label: "Settings",
+    href: "/admin/settings",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="2.5" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -28,24 +52,44 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-col gap-1 p-4 flex-1">
-      {navItems.map(({ label, href, icon }) => {
-        const isActive = pathname === href;
-        return (
-          <Link
-            key={href}
-            href={href}
-            className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              isActive
-                ? "bg-blue-600 text-white"
-                : "text-slate-400 hover:text-white hover:bg-white/10"
-            }`}
-          >
-            {icon}
-            {label}
-          </Link>
-        );
-      })}
+    <nav className="flex flex-col flex-1">
+      <div className="px-5 pt-6 pb-2 text-[11px] font-semibold text-[#3B4454] uppercase tracking-[0.08em]">
+        Navigation
+      </div>
+
+      <div className="flex flex-col gap-0.5 px-3">
+        {navItems.map(({ label, href, icon }) => {
+          const isActive = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-150 ${
+                isActive
+                  ? "bg-[#3B82F6]/12 border border-[#3B82F6]/20 text-[#3B82F6]"
+                  : "text-[#6E7681] hover:text-[#F0F6FC] hover:bg-white/[0.06]"
+              }`}
+            >
+              <span className="shrink-0">{icon}</span>
+              {label}
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* User profile */}
+      <div className="mt-auto mx-3 mb-4 border-t border-white/[0.06] pt-4">
+        <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/[0.04]">
+          <div
+            className="w-8 h-8 rounded-full shrink-0"
+            style={{ background: "linear-gradient(135deg,#3b82f6,#6366f1)" }}
+          />
+          <div className="flex flex-col min-w-0">
+            <span className="text-[13px] font-semibold text-[#F0F6FC] truncate">Alex Morgan</span>
+            <span className="text-[11px] text-[#6E7681]">Admin</span>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }
